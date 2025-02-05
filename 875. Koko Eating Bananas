@@ -1,0 +1,31 @@
+class Solution {
+public:
+    long long findHours(vector<int>& piles, int n){
+        long long h = 0;
+
+        for(long long i : piles){
+            h += i/n;
+            if(i%n != 0) h++;
+        }
+
+        return h;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) {
+        long long n = piles.size();
+        long long ans = *max_element(begin(piles),end(piles));
+        long long left = 1, right = ans;
+
+        while(left <= right){
+            long long mid = left + (right - left)/2;
+
+            long long hours = findHours(piles,mid);
+            
+            if(hours <= h){
+                ans = mid;
+                right = mid - 1;
+            }
+            else left = mid+1;
+        }
+        return ans;
+    }
+};
