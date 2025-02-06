@@ -30,3 +30,32 @@ public:
         return cnt*2;
     }
 };
+
+
+// Better approach O(n^3) & O(n)
+class Solution {
+public:
+    typedef long long ll;
+    int tupleSameProduct(vector<int>& nums) {
+        int n = nums.size();
+        int tuple = 0;
+        sort(begin(nums),end(nums));
+
+        for(int i=0; i<n; i++){
+            for(int j=n-1; j>i; j--){
+                ll p1 = 1LL*nums[i]*1LL*nums[j];
+                unordered_set<int> st;
+                for(int k=i+1; k<j; k++){
+                    if(p1%nums[k] == 0){
+                        int dval = p1/nums[k];
+                        if(st.count(dval)>0){
+                            tuple++;
+                        }
+                        st.insert(nums[k]);
+                    }
+                }
+            }
+        }
+        return tuple*8;
+    }
+};
