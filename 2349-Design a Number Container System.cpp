@@ -7,7 +7,7 @@ public:
     void change(int index, int number) {
         if(mpp.count(index)){
             int oldNum = mpp[index];
-            st[oldNum].erase(index);
+            st[oldNum].erase(index); //O(log(n))
             if(st[oldNum].empty()) st.erase(oldNum);
         }
 
@@ -18,7 +18,7 @@ public:
     
     int find(int number) {
         if(st.find(number) != st.end()){
-            return *st[number].begin();
+            return *st[number].begin(); //O(1)
         }
         return -1;
     }
