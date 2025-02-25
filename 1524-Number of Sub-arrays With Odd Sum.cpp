@@ -18,3 +18,32 @@ public:
         return subArrays;
     }
 };
+
+// Optimal
+// T.C - O(n)
+// S.C - O(1)
+class Solution {
+public:
+    int MOD = 1e9+7;
+    int numOfSubarrays(vector<int>& arr) {
+        int subArrays = 0;
+        int n = arr.size();
+
+        int preSum = 0;
+        int odd=0, even=1;
+
+        for(int i=0; i<n; i++){
+            preSum += arr[i];
+            if(preSum%2 == 0){
+                subArrays = (subArrays + odd) % MOD;
+                even++;
+            }
+            else{
+                subArrays = (subArrays + even) % MOD;
+                odd++;
+            }
+        }
+
+        return subArrays;
+    }
+};
