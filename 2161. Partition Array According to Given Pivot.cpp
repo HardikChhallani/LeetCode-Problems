@@ -68,7 +68,3 @@ public:
         return res;
     }
 };
-
-//Approach-3 (Using pointers only)
-//T.C : O(n)
-//S.C : O(n)
