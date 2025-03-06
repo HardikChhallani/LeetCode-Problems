@@ -1,5 +1,5 @@
 // T.C - O(n^2)
-// S.C - O(n)
+// S.C - O(n^2)
 class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
