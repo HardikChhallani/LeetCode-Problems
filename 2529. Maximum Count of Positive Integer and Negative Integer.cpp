@@ -1,3 +1,17 @@
+// Using C++ STL
+//T.C : O(n)
+//S.C : O(1)
+class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+        int P = count_if(nums.begin(),nums.end(),[](int n){ return n>0;});
+        int N = count_if(nums.begin(),nums.end(),[](int n){ return n<0;});
+        return max(P,N);
+    }
+};
+
+// -----------------------------------------------------------------------------------------------------
+
 // T.C - O(2*log(n)) => O(log(n))
 // S.C - O(1)
 class Solution {
